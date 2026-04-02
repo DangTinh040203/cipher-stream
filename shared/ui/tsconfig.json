@@ -1,0 +1,10 @@
+{
+  "extends": "@shared/typescript-config/react-library.json",
+  "compilerOptions": {
+    "paths": {
+      "@shared/ui/*": ["./src/*"]
+    }
+  },
+  "include": ["."],
+  "exclude": ["node_modules", "dist"]
+}
