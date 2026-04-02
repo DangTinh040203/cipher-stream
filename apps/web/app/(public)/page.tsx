@@ -1,19 +1,19 @@
 import { CategoriesSection } from "@/components/home/categories-section";
-import { CtaSection } from "@/components/home/cta-section";
-import { FeaturedCourses } from "@/components/home/featured-courses";
+import { CTASection } from "@/components/home/cta-section";
+import { FeaturedCoursesSection } from "@/components/home/featured-courses";
 import { HeroSection } from "@/components/home/hero-section";
-import { NewCourses } from "@/components/home/new-courses";
 import { TestimonialsSection } from "@/components/home/testimonials-section";
+import { WhyChooseUsSection } from "@/components/home/why-choose-us";
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <FeaturedCourses />
       <CategoriesSection />
-      <NewCourses />
+      <FeaturedCoursesSection />
+      <WhyChooseUsSection />
       <TestimonialsSection />
-      <CtaSection />
+      <CTASection />
     </>
   );
 }

@@ -4,9 +4,8 @@ import { Clock, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { RatingStars } from "@/components/rating-stars";
 import type { Course } from "@/types";
-
-import { RatingStars } from "./rating-stars";
 
 interface CourseCardProps {
   course: Course;

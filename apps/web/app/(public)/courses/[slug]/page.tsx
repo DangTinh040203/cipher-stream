@@ -18,7 +18,7 @@ import {
   Check,
   Clock,
   Globe,
-  Infinity,
+  Infinity as InfinityIcon,
   Monitor,
   Play,
   Star,
@@ -224,7 +224,7 @@ export default async function CourseDetailPage({ params }: Props) {
                     <div
                       className={`text-muted-foreground flex items-center gap-2`}
                     >
-                      <Infinity className="size-4 shrink-0" />
+                      <InfinityIcon className="size-4 shrink-0" />
                       Full lifetime access
                     </div>
                     <div

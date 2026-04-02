@@ -19,13 +19,12 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+import { SSOButtons } from "@/components/auth/sso-buttons";
 import {
   buttonScaleVariants,
   formContainerVariants,
   formItemVariants,
 } from "@/styles/animation";
-
-import { SSOButtons } from "./sso-buttons";
 
 const signInSchema = z.object({
   email: z
