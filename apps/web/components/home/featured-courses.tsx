@@ -1,11 +1,13 @@
 "use client";
 
 import { Card, CardContent } from "@shared/ui/components/card";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { BookOpen, Clock, Star, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import BlurText from "@/components/common/blur-text";
+import ShinyText from "@/components/common/shiny-text";
 import { courses } from "@/lib/mock-data";
 import { fadeInUp, staggerContainer } from "@/styles/animation";
 
@@ -27,15 +29,15 @@ export function FeaturedCoursesSection() {
         `}
       />
 
-      <div className="mx-auto max-w-7xl">
-        <motion.div
+      <div className="container mx-auto">
+        <m.div
           className="mb-16 text-center"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -44,16 +46,23 @@ export function FeaturedCoursesSection() {
               py-1.5 text-sm font-semibold tracking-wider uppercase
             `}
           >
-            Most Popular
-          </motion.div>
-          <h2
+            <ShinyText
+              text="Most Popular"
+              speed={3}
+              className="text-sm font-semibold tracking-wider uppercase"
+            />
+          </m.div>
+          <BlurText
+            text="Featured Courses"
+            delay={80}
+            animateBy="words"
+            direction="top"
             className={`
-              font-display mb-6 text-3xl font-extrabold tracking-tight
+              font-display mb-6 flex-wrap justify-center text-3xl font-extrabold
+              tracking-tight
               md:text-5xl
             `}
-          >
-            Featured Courses
-          </h2>
+          />
           <p
             className={`
               text-muted-foreground mx-auto max-w-2xl text-base leading-relaxed
@@ -62,9 +71,9 @@ export function FeaturedCoursesSection() {
           >
             Hand-picked courses loved by thousands of students worldwide.
           </p>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           className={`
             grid gap-6
             md:grid-cols-2
@@ -76,7 +85,7 @@ export function FeaturedCoursesSection() {
           viewport={{ once: true, margin: "-50px" }}
         >
           {featured.map((course) => (
-            <motion.div
+            <m.div
               key={course.id}
               variants={fadeInUp}
               whileHover={{
@@ -203,11 +212,11 @@ export function FeaturedCoursesSection() {
                   </CardContent>
                 </Card>
               </Link>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           className="mt-12 text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -224,7 +233,7 @@ export function FeaturedCoursesSection() {
           >
             View all courses →
           </Link>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

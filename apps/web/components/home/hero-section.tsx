@@ -2,10 +2,12 @@
 
 import { Badge } from "@shared/ui/components/badge";
 import { Button } from "@shared/ui/components/button";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 
+import FloatingParticles from "@/components/common/floating-particles";
+import ShinyText from "@/components/common/shiny-text";
 import { fadeInUp, staggerContainer } from "@/styles/animation";
 
 export function HeroSection() {
@@ -13,10 +15,12 @@ export function HeroSection() {
     <section
       className={`
         from-background via-primary/5 to-accent/10 relative flex min-h-screen
-        items-center overflow-hidden bg-linear-to-br px-4 pt-24 pb-24
-        md:px-6 md:pt-32
+        items-center overflow-hidden bg-linear-to-br px-2 pt-24 pb-24
+        md:px-4 md:pt-32
       `}
     >
+      <FloatingParticles />
+
       {/* Background blobs */}
       <div className="absolute inset-0 overflow-hidden">
         <div
@@ -41,35 +45,41 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-5xl">
+      <div className="relative z-10 container mx-auto">
         <div className="mx-auto max-w-4xl text-center">
           {/* Badge */}
-          <motion.div
+          <m.div
             className={`
               bg-primary/10 border-primary/20 mb-8 inline-flex items-center
               gap-2 rounded-full border px-4 py-2 backdrop-blur-sm
             `}
             initial={{ opacity: 0, y: -20, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
+            }}
           >
             <Sparkles
               className="text-primary h-4 w-4 animate-spin"
               style={{ animationDuration: "4s" }}
             />
-            <span className="text-sm font-medium">
-              Learn from Industry Experts
-            </span>
+            <ShinyText
+              text="Learn from Industry Experts"
+              speed={3}
+              className="text-sm font-medium"
+            />
             <Badge
               className={`bg-primary/20 text-primary border-none text-[10px]`}
             >
               NEW
             </Badge>
-          </motion.div>
+          </m.div>
 
           {/* Headline */}
           <div className="overflow-hidden">
-            <motion.h1
+            <m.h1
               className={`
                 font-display text-foreground text-4xl leading-[1.1]
                 font-extrabold tracking-tight
@@ -81,8 +91,8 @@ export function HeroSection() {
               transition={{ duration: 0.5 }}
             >
               Master skills,
-            </motion.h1>
-            <motion.h1
+            </m.h1>
+            <m.h1
               className={`
                 font-display gradient-text mb-6 py-2 text-4xl leading-[1.1]
                 font-extrabold tracking-tight
@@ -94,10 +104,10 @@ export function HeroSection() {
               transition={{ duration: 0.5, delay: 0.15 }}
             >
               advance your career.
-            </motion.h1>
+            </m.h1>
           </div>
 
-          <motion.p
+          <m.p
             className={`
               text-muted-foreground mx-auto mb-10 max-w-2xl text-base
               leading-relaxed
@@ -115,10 +125,10 @@ export function HeroSection() {
               `}
             />
             Access 10,000+ courses from world-class instructors.
-          </motion.p>
+          </m.p>
 
-          {/* CTA */}
-          <motion.div
+          {/* CTA Buttons */}
+          <m.div
             className={`
               flex flex-col justify-center gap-4
               sm:flex-row
@@ -173,10 +183,10 @@ export function HeroSection() {
                 Get Started Free
               </Button>
             </Link>
-          </motion.div>
+          </m.div>
 
-          {/* Stats */}
-          <motion.div
+          {/* Stats Cards */}
+          <m.div
             className={`
               mt-20 grid grid-cols-2 gap-4
               md:grid-cols-4
@@ -191,11 +201,11 @@ export function HeroSection() {
               { label: "Instructors", color: "bg-yellow-500", count: "2K+" },
               {
                 label: "Completion Rate",
-                color: "bg-purple-500",
+                color: "bg-emerald-500",
                 count: "94%",
               },
             ].map((item) => (
-              <motion.div
+              <m.div
                 key={item.label}
                 className={`
                   bg-card/50 border-border/50 group relative cursor-pointer
@@ -223,9 +233,9 @@ export function HeroSection() {
                   </span>
                 </div>
                 <div className="text-2xl font-bold">{item.count}</div>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
 
           {/* Scroll indicator */}
           <div

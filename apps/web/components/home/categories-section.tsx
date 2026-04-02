@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import {
   BarChart3,
   Brain,
@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+import BlurText from "@/components/common/blur-text";
+import ShinyText from "@/components/common/shiny-text";
 import { categories } from "@/lib/mock-data";
 import { fadeInUp, staggerContainer } from "@/styles/animation";
 
@@ -31,10 +33,10 @@ const gradientBg = [
   "from-blue-500/10 to-cyan-500/10",
   "from-green-500/10 to-emerald-500/10",
   "from-orange-500/10 to-amber-500/10",
-  "from-purple-500/10 to-violet-500/10",
+  "from-teal-500/10 to-cyan-500/10",
   "from-red-500/10 to-rose-500/10",
   "from-pink-500/10 to-fuchsia-500/10",
-  "from-teal-500/10 to-sky-500/10",
+  "from-sky-500/10 to-blue-500/10",
   "from-indigo-500/10 to-blue-500/10",
 ];
 
@@ -46,15 +48,15 @@ export function CategoriesSection() {
         md:px-6 md:py-24
       `}
     >
-      <div className="mx-auto max-w-7xl">
-        <motion.div
+      <div className="container mx-auto">
+        <m.div
           className="mb-16 text-center"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -63,16 +65,23 @@ export function CategoriesSection() {
               py-1.5 text-sm font-semibold tracking-wider uppercase
             `}
           >
-            Browse Topics
-          </motion.div>
-          <h2
+            <ShinyText
+              text="Browse Topics"
+              speed={3}
+              className="text-sm font-semibold tracking-wider uppercase"
+            />
+          </m.div>
+          <BlurText
+            text="Explore Our Course Categories"
+            delay={80}
+            animateBy="words"
+            direction="top"
             className={`
-              font-display mb-6 text-3xl font-extrabold tracking-tight
+              font-display mb-6 flex-wrap justify-center text-3xl font-extrabold
+              tracking-tight
               md:text-5xl
             `}
-          >
-            Explore Our Course Categories
-          </h2>
+          />
           <p
             className={`
               text-muted-foreground mx-auto max-w-2xl text-base leading-relaxed
@@ -82,9 +91,9 @@ export function CategoriesSection() {
             From web development to AI, find the perfect course to accelerate
             your career growth.
           </p>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           className={`
             grid grid-cols-2 gap-4
             md:grid-cols-4 md:gap-6
@@ -97,7 +106,7 @@ export function CategoriesSection() {
           {categories.map((cat, i) => {
             const Icon = iconMap[cat.icon] ?? Code;
             return (
-              <motion.div
+              <m.div
                 key={cat.id}
                 variants={fadeInUp}
                 whileHover={{
@@ -117,7 +126,7 @@ export function CategoriesSection() {
                     md:p-8
                   `}
                 >
-                  <motion.div
+                  <m.div
                     className={`
                       gradient-bg flex h-14 w-14 items-center justify-center
                       rounded-xl transition-transform
@@ -127,7 +136,7 @@ export function CategoriesSection() {
                     transition={{ duration: 0.5 }}
                   >
                     <Icon className="text-primary-foreground h-7 w-7" />
-                  </motion.div>
+                  </m.div>
                   <h3
                     className={`
                       text-sm font-bold
@@ -140,10 +149,10 @@ export function CategoriesSection() {
                     {cat.courseCount} courses
                   </span>
                 </Link>
-              </motion.div>
+              </m.div>
             );
           })}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

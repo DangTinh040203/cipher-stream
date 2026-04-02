@@ -1,9 +1,11 @@
 "use client";
 
 import { Card, CardContent } from "@shared/ui/components/card";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Star } from "lucide-react";
 
+import BlurText from "@/components/common/blur-text";
+import ShinyText from "@/components/common/shiny-text";
 import { fadeInUp, staggerContainer } from "@/styles/animation";
 
 const testimonials = [
@@ -41,15 +43,15 @@ export function TestimonialsSection() {
         md:px-6 md:py-24
       `}
     >
-      <div className="mx-auto max-w-7xl">
-        <motion.div
+      <div className="container mx-auto">
+        <m.div
           className="mb-20 text-center"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -58,16 +60,23 @@ export function TestimonialsSection() {
               py-1.5 text-sm font-semibold tracking-wider uppercase
             `}
           >
-            Student Success Stories
-          </motion.div>
-          <h2
+            <ShinyText
+              text="Student Success Stories"
+              speed={3}
+              className="text-sm font-semibold tracking-wider uppercase"
+            />
+          </m.div>
+          <BlurText
+            text="Loved by Thousands of Learners"
+            delay={80}
+            animateBy="words"
+            direction="top"
             className={`
-              font-display mb-6 text-3xl font-extrabold tracking-tight
+              font-display mb-6 flex-wrap justify-center text-3xl font-extrabold
+              tracking-tight
               md:text-5xl
             `}
-          >
-            Loved by Thousands of Learners
-          </h2>
+          />
           <p
             className={`
               text-muted-foreground mx-auto max-w-2xl text-base leading-relaxed
@@ -77,9 +86,9 @@ export function TestimonialsSection() {
             Hear from students who have transformed their careers with
             CipherStream courses.
           </p>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           className={`
             grid gap-8
             md:grid-cols-3
@@ -90,7 +99,7 @@ export function TestimonialsSection() {
           viewport={{ once: true, margin: "-50px" }}
         >
           {testimonials.map((testimonial) => (
-            <motion.div
+            <m.div
               key={testimonial.name}
               variants={fadeInUp}
               whileHover={{ y: -12 }}
@@ -106,7 +115,7 @@ export function TestimonialsSection() {
                 <CardContent className="p-8">
                   <div className="mb-6 flex gap-1">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <motion.div
+                      <m.div
                         key={i}
                         initial={{ opacity: 0, scale: 0 }}
                         whileInView={{ opacity: 1, scale: 1 }}
@@ -116,7 +125,7 @@ export function TestimonialsSection() {
                         <Star
                           className={`h-5 w-5 fill-yellow-400 text-yellow-400`}
                         />
-                      </motion.div>
+                      </m.div>
                     ))}
                   </div>
                   <p
@@ -132,7 +141,7 @@ export function TestimonialsSection() {
                       border-border/60 flex items-center gap-4 border-t pt-6
                     `}
                   >
-                    <motion.div
+                    <m.div
                       className={`
                         from-primary to-accent text-primary-foreground
                         shadow-primary/20 flex h-14 w-14 items-center
@@ -142,7 +151,7 @@ export function TestimonialsSection() {
                       whileHover={{ scale: 1.1, rotate: 5 }}
                     >
                       {testimonial.initials}
-                    </motion.div>
+                    </m.div>
                     <div>
                       <div
                         className={`
@@ -159,9 +168,9 @@ export function TestimonialsSection() {
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

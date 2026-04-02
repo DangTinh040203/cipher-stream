@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import {
   Award,
   Globe,
@@ -10,6 +10,8 @@ import {
   Zap,
 } from "lucide-react";
 
+import BlurText from "@/components/common/blur-text";
+import ShinyText from "@/components/common/shiny-text";
 import { fadeInUp, staggerContainer } from "@/styles/animation";
 
 const features = [
@@ -58,15 +60,15 @@ export function WhyChooseUsSection() {
         md:px-6 md:py-24
       `}
     >
-      <div className="mx-auto max-w-7xl">
-        <motion.div
+      <div className="container mx-auto">
+        <m.div
           className="mb-20 text-center"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -76,16 +78,23 @@ export function WhyChooseUsSection() {
               py-1.5 text-sm font-semibold tracking-wider uppercase
             `}
           >
-            Why CipherStream
-          </motion.div>
-          <h2
+            <ShinyText
+              text="Why CipherStream"
+              speed={3}
+              className="text-sm font-semibold tracking-wider uppercase"
+            />
+          </m.div>
+          <BlurText
+            text="Everything You Need to Succeed"
+            delay={80}
+            animateBy="words"
+            direction="top"
             className={`
-              font-display mb-6 text-3xl font-extrabold tracking-tight
+              font-display mb-6 flex-wrap justify-center text-3xl font-extrabold
+              tracking-tight
               md:text-5xl
             `}
-          >
-            Everything You Need to Succeed
-          </h2>
+          />
           <p
             className={`
               text-muted-foreground mx-auto max-w-2xl text-base leading-relaxed
@@ -95,9 +104,9 @@ export function WhyChooseUsSection() {
             Our platform provides the tools, content, and community you need to
             transform your career.
           </p>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           className={`
             grid gap-8
             md:grid-cols-2
@@ -109,7 +118,7 @@ export function WhyChooseUsSection() {
           viewport={{ once: true, margin: "-50px" }}
         >
           {features.map((feature) => (
-            <motion.div
+            <m.div
               key={feature.title}
               variants={fadeInUp}
               whileHover={{
@@ -132,7 +141,7 @@ export function WhyChooseUsSection() {
                 <feature.icon size={120} />
               </div>
 
-              <motion.div
+              <m.div
                 className={`
                   gradient-bg shadow-glow mb-8 flex h-16 w-16 items-center
                   justify-center rounded-2xl transition-all duration-500
@@ -142,7 +151,7 @@ export function WhyChooseUsSection() {
                 transition={{ duration: 0.5 }}
               >
                 <feature.icon className="text-primary-foreground h-8 w-8" />
-              </motion.div>
+              </m.div>
 
               <h3
                 className={`
@@ -160,9 +169,9 @@ export function WhyChooseUsSection() {
               >
                 {feature.description}
               </p>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

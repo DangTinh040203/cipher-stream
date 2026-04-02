@@ -1,6 +1,10 @@
-import { Separator } from "@shared/ui/components/separator";
+"use client";
+
+import { m } from "framer-motion";
 import { GraduationCap } from "lucide-react";
 import Link from "next/link";
+
+import { fadeInUp, staggerContainer } from "@/styles/animation";
 
 const footerLinks = {
   Platform: [
@@ -25,102 +29,115 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="border-border bg-background border-t">
-      <div
-        className={`
-          mx-auto max-w-7xl px-4 py-12
-          lg:px-8
-        `}
-      >
-        <div
+    <footer className="border-border bg-muted/30 border-t px-4 py-12">
+      <div className="container mx-auto">
+        <m.div
           className={`
             grid gap-8
             sm:grid-cols-2
             lg:grid-cols-4
           `}
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
         >
           {/* Brand */}
-          <div className="space-y-4">
+          <m.div className="space-y-4" variants={fadeInUp}>
             <Link href="/" className="flex items-center gap-2">
-              <div
+              <m.div
                 className={`
-                  bg-primary flex size-8 items-center justify-center rounded-lg
+                  gradient-bg flex size-8 items-center justify-center rounded-lg
                 `}
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.5 }}
               >
                 <GraduationCap className="text-primary-foreground size-5" />
-              </div>
-              <span className="text-lg font-bold">CipherStream</span>
+              </m.div>
+              <span className="font-display text-lg font-bold">
+                Cipher<span className="gradient-text">Stream</span>
+              </span>
             </Link>
             <p className="text-muted-foreground text-sm">
               Unlock your potential with world-class courses from industry
               experts. Learn at your own pace, anytime, anywhere.
             </p>
-          </div>
+          </m.div>
 
           {/* Link Columns */}
           {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title}>
-              <h3 className="mb-3 text-sm font-semibold">{title}</h3>
+            <m.div key={title} variants={fadeInUp}>
+              <h4 className="mb-4 font-semibold">{title}</h4>
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className={`
-                        text-muted-foreground text-sm transition-colors
-                        hover:text-foreground
-                      `}
-                    >
-                      {link.label}
-                    </Link>
+                    <m.div whileHover={{ x: 5 }}>
+                      <Link
+                        href={link.href}
+                        className={`
+                          text-muted-foreground text-sm transition-colors
+                          hover:text-foreground
+                        `}
+                      >
+                        {link.label}
+                      </Link>
+                    </m.div>
                   </li>
                 ))}
               </ul>
-            </div>
+            </m.div>
           ))}
-        </div>
+        </m.div>
 
-        <Separator className="my-8" />
-
-        <div
+        <m.div
           className={`
-            flex flex-col items-center justify-between gap-4
-            sm:flex-row
+            border-border text-muted-foreground mt-12 border-t pt-8 text-center
+            text-sm
           `}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
         >
-          <p className="text-muted-foreground text-xs">
-            © {new Date().getFullYear()} CipherStream. All rights reserved.
-          </p>
-          <div className="flex gap-4">
-            <Link
-              href="#"
-              className={`
-                text-muted-foreground text-xs
-                hover:text-foreground
-              `}
-            >
-              Terms
-            </Link>
-            <Link
-              href="#"
-              className={`
-                text-muted-foreground text-xs
-                hover:text-foreground
-              `}
-            >
-              Privacy
-            </Link>
-            <Link
-              href="#"
-              className={`
-                text-muted-foreground text-xs
-                hover:text-foreground
-              `}
-            >
-              Cookies
-            </Link>
+          <div
+            className={`
+              flex flex-col items-center justify-between gap-4
+              sm:flex-row
+            `}
+          >
+            <p className="text-xs">
+              © {new Date().getFullYear()} CipherStream. All rights reserved.
+            </p>
+            <div className="flex gap-4">
+              <Link
+                href="#"
+                className={`
+                  hover:text-foreground
+                  text-xs transition-colors
+                `}
+              >
+                Terms
+              </Link>
+              <Link
+                href="#"
+                className={`
+                  hover:text-foreground
+                  text-xs transition-colors
+                `}
+              >
+                Privacy
+              </Link>
+              <Link
+                href="#"
+                className={`
+                  hover:text-foreground
+                  text-xs transition-colors
+                `}
+              >
+                Cookies
+              </Link>
+            </div>
           </div>
-        </div>
+        </m.div>
       </div>
     </footer>
   );

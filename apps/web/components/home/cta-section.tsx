@@ -1,15 +1,15 @@
 "use client";
 
 import { Button } from "@shared/ui/components/button";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export function CTASection() {
   return (
     <section className="px-4 py-24 pb-32">
-      <div className="mx-auto max-w-7xl">
-        <motion.div
+      <div className="container mx-auto">
+        <m.div
           className={`
             from-primary to-primary/50 shadow-primary/20 relative
             overflow-hidden rounded-[48px] bg-linear-to-br p-8 text-center
@@ -44,7 +44,7 @@ export function CTASection() {
           />
 
           <div className="relative z-10">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -56,9 +56,9 @@ export function CTASection() {
               `}
             >
               Start Learning Today
-            </motion.div>
+            </m.div>
 
-            <motion.h2
+            <m.h2
               className={`
                 font-display text-primary-foreground mb-8 text-3xl font-black
                 tracking-tighter
@@ -73,9 +73,9 @@ export function CTASection() {
               Ready to Transform
               <br />
               Your Career?
-            </motion.h2>
+            </m.h2>
 
-            <motion.p
+            <m.p
               className={`
                 text-primary-foreground/80 mx-auto mb-12 max-w-2xl text-base
                 leading-relaxed font-medium
@@ -88,9 +88,9 @@ export function CTASection() {
             >
               Join 500,000+ students who have already accelerated their careers
               with our world-class courses.
-            </motion.p>
+            </m.p>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -101,7 +101,7 @@ export function CTASection() {
               `}
             >
               <Link href="/courses">
-                <motion.div
+                <m.div
                   whileHover={{ scale: 1.05, y: -5 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -117,11 +117,11 @@ export function CTASection() {
                     Browse Courses
                     <ArrowRight className="ml-3 h-6 w-6" />
                   </Button>
-                </motion.div>
+                </m.div>
               </Link>
-            </motion.div>
+            </m.div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );
