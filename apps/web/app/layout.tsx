@@ -7,6 +7,8 @@ import { type Metadata } from "next";
 import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 
+import { ThemeProvider } from "@/context/theme-provider";
+
 const fontSans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -36,9 +38,16 @@ export default function RootLayout({
           font-sans antialiased
         `}
       >
-        <Toaster richColors />
-        <NextTopLoader showSpinner={false} />
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Toaster richColors />
+          <NextTopLoader showSpinner={false} />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -6,6 +6,8 @@ import { Toaster } from "@shared/ui/components/sonner";
 import { type Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import { ThemeProvider } from "@/context/theme-provider";
+
 const fontSans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -35,8 +37,15 @@ export default function RootLayout({
           font-sans antialiased
         `}
       >
-        <Toaster richColors />
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Toaster richColors />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

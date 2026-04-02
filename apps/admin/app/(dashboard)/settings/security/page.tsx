@@ -1,11 +1,14 @@
 import { Header } from "@/components/layout/header";
 import { Main } from "@/components/layout/main";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function SecuritySettingsPage() {
   return (
     <>
       <Header fixed>
-        <div className="ml-auto flex items-center space-x-4" />
+        <div className="ml-auto flex items-center space-x-4">
+          <ThemeToggle />
+        </div>
       </Header>
       <Main fixed>
         <div className="mb-2 flex items-center justify-between space-y-2">

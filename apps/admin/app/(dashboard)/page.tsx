@@ -9,6 +9,7 @@ import { BarChart3, Eye, TrendingUp, Users } from "lucide-react";
 import { Header } from "@/components/layout/header";
 import { Main } from "@/components/layout/main";
 import { TopNav } from "@/components/layout/top-nav";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const topNavLinks = [
   { title: "Overview", href: "/", isActive: true },
@@ -49,7 +50,9 @@ export default function DashboardPage() {
     <>
       <Header fixed>
         <TopNav links={topNavLinks} />
-        <div className="ml-auto flex items-center space-x-4" />
+        <div className="ml-auto flex items-center space-x-4">
+          <ThemeToggle />
+        </div>
       </Header>
 
       <Main fixed>
